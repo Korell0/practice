@@ -1,9 +1,12 @@
-const http = require('http');
 
-const requestListener = function (req, res) {
-  res.writeHead(200);
-  res.end('Hello, World!');
-}
+const express  = require('express');
+const app = express;
+const port = 1916;
+const path = require('path');
 
-const server = http.createServer(requestListener);
-server.listen(8080);
+app.use('/css',express.static(path.join(__dirname+"/css")));
+app.get('/',express.static(path.join(__dirname+"/index.html")));
+app.get('/hobbies',express.static(path.join(__dirname+"/hobbies.html")));
+app.get('/contacts',express.static(path.join(__dirname+"/contacts.html")));
+
+
